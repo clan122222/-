@@ -1,0 +1,276 @@
+1. Просмотр всех настроек сети
+Команда ifconfig без аргументов отобразит все подробности об активных интерфейсах. Команда ifconfig также используется для проверки назначенного IP-адреса сервера:
+
+1
+[root@sedicomm ~]# ifconfig
+2
+​
+3
+eth0 Link encap:Ethernet HWaddr 00:0B:CD:1C:18:5A
+4
+inet addr:192.168.0.126 Bcast:192.168.0.63 Mask:255.255.255.224
+5
+inet6 addr: fe80::20b:cdff:fe1c:185a/64 Scope:Link
+6
+UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
+7
+RX packets:2341604 errors:0 dropped:0 overruns:0 frame:0
+8
+TX packets:2217673 errors:0 dropped:0 overruns:0 carrier:0
+9
+collisions:0 txqueuelen:1000
+10
+RX bytes:293460932 (279.8 MiB) TX bytes:1042006549 (993.7 MiB)
+11
+Interrupt:185 Memory:f7fe0000-f7ff0000
+12
+​
+13
+lo Link encap:Local Loopback
+14
+inet addr:127.0.0.1 Mask:255.0.0.0
+15
+inet6 addr: ::1/128 Scope:Host
+16
+UP LOOPBACK RUNNING MTU:16436 Metric:1
+17
+RX packets:5019066 errors:0 dropped:0 overruns:0 frame:0
+18
+TX packets:5019066 errors:0 dropped:0 overruns:0 carrier:0
+19
+collisions:0 txqueuelen:0
+20
+RX bytes:2174522634 (2.0 GiB) TX bytes:2174522634 (2.0 GiB)
+21
+​
+22
+tun0 Link encap:UNSPEC HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00
+23
+inet addr:10.1.1.1 P-t-P:10.1.1.2 Mask:255.255.255.255
+24
+UP POINTOPOINT RUNNING NOARP MULTICAST MTU:1500 Metric:1
+25
+RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+26
+TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+27
+collisions:0 txqueuelen:100
+28
+RX bytes:0 (0.0 b) TX bytes:0 (0.0 b)
+ 
+
+2. Отображение информации обо всех сетевых интерфейсах
+Следующая команда ifconfig с аргументом -a отобразит информацию обо всех активных или неактивных сетевых интерфейсах на сервере. Она отображает результаты для eth0, lo, sit0 и tun0:
+
+Курсы Python с нуля до DevOps на практике за 1,5 часа
+1
+[root@sedicomm ~]# ifconfig -a
+2
+​
+3
+eth0 Link encap:Ethernet HWaddr 00:0B:CD:1C:18:5A
+4
+inet addr:172.16.25.126 Bcast:172.16.25.63 Mask:255.255.255.224
+5
+inet6 addr: fe80::20b:cdff:fe1c:185a/64 Scope:Link
+6
+UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
+7
+RX packets:2344927 errors:0 dropped:0 overruns:0 frame:0
+8
+TX packets:2220777 errors:0 dropped:0 overruns:0 carrier:0
+9
+collisions:0 txqueuelen:1000
+10
+RX bytes:293839516 (280.2 MiB) TX bytes:1043722206 (995.3 MiB)
+11
+Interrupt:185 Memory:f7fe0000-f7ff0000
+12
+​
+13
+lo Link encap:Local Loopback
+14
+inet addr:127.0.0.1 Mask:255.0.0.0
+15
+inet6 addr: ::1/128 Scope:Host
+16
+UP LOOPBACK RUNNING MTU:16436 Metric:1
+17
+RX packets:5022927 errors:0 dropped:0 overruns:0 frame:0
+18
+TX packets:5022927 errors:0 dropped:0 overruns:0 carrier:0
+19
+collisions:0 txqueuelen:0
+20
+RX bytes:2175739488 (2.0 GiB) TX bytes:2175739488 (2.0 GiB)
+21
+​
+22
+sit0 Link encap:IPv6-in-IPv4
+23
+NOARP MTU:1480 Metric:1
+24
+RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+25
+TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+26
+collisions:0 txqueuelen:0
+27
+RX bytes:0 (0.0 b) TX bytes:0 (0.0 b)
+28
+​
+29
+tun0 Link encap:UNSPEC HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00
+30
+inet addr:10.1.1.1 P-t-P:10.1.1.2 Mask:255.255.255.255
+31
+UP POINTOPOINT RUNNING NOARP MULTICAST MTU:1500 Metric:1
+32
+RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+33
+TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+34
+collisions:0 txqueuelen:100
+35
+RX bytes:0 (0.0 b) TX bytes:0 (0.0 b)
+ 
+
+3. Просмотр настроек сети для определенного интерфейса
+Использование имени интерфейса (eth0) в качестве аргумента с командой «ifconfig» покажет вам детали конкретного сетевого интерфейса:
+
+1
+[root@sedicomm ~]# ifconfig eth0
+2
+​
+3
+eth0 Link encap:Ethernet HWaddr 00:0B:CD:1C:18:5A
+4
+inet addr:172.16.25.126 Bcast:172.16.25.63 Mask:255.255.255.224
+5
+inet6 addr: fe80::20b:cdff:fe1c:185a/64 Scope:Link
+6
+UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
+7
+RX packets:2345583 errors:0 dropped:0 overruns:0 frame:0
+8
+TX packets:2221421 errors:0 dropped:0 overruns:0 carrier:0
+9
+collisions:0 txqueuelen:1000
+10
+RX bytes:293912265 (280.2 MiB) TX bytes:1044100408 (995.7 MiB)
+11
+Interrupt:185 Memory:f7fe0000-f7ff0000
+ 
+
+4. Как включить сетевой интерфейс?
+Флаг «up» или «ifup» с именем интерфейса (eth0) активирует сетевой интерфейс, если он не находится в активном состоянии и позволяет вам отправлять и получать информацию. Например, «ifconfig eth0 up» или «ifup eth0» активирует интерфейс eth0:
+
+1
+[root@sedicomm ~]# ifconfig eth0 up
+2
+ИЛИ
+3
+[root@sedicomm ~]# ifup eth0
+ 
+
+5. Как отключить сетевой интерфейс?
+Флаг «down» или «ifdown» с именем интерфейса (eth0) деактивирует указанный сетевой интерфейс. Например, команда «ifconfig eth0 down» или «ifdown eth0» деактивирует интерфейс eth0, если он находится в активном состоянии:
+
+1
+[root@sedicomm ~]# ifconfig eth0 down
+2
+ИЛИ
+3
+[root@sedicomm ~]# ifdown eth0
+ 
+
+6. Как назначить IP-адрес сетевому интерфейсу?
+Чтобы назначить IP-адрес определенному интерфейсу, используйте следующую команду с именем интерфейса (eth0) и IP-адресом, который вы хотите установить. Например, «ifconfig eth0 172.16.25.125» установит IP-адрес для интерфейса eth0:
+
+1
+[root@sedicomm ~]# ifconfig eth0 172.16.25.125
+ 
+
+7. Как назначить маску сети для сетевого интерфейса?
+Использование команды «ifconfig» с аргументом «netmask» и именем интерфейса (eth0) позволяет определить маску сети для данного интерфейса. Например, «ifconfig eth0 netmask 255.255.255.224» установит маску сети для данного интерфейса eth0:
+
+Курсы Git за час: руководство для начинающих DevOps / DevNet инженеров
+1
+[root@sedicomm ~]# ifconfig eth0 netmask 255.255.255.224
+ 
+
+8. Как назначить широковещательный адрес на сетевом интерфейсе?
+Использование аргумента «broadcast» с именем интерфейса установит широковещательный адрес для данного интерфейса. Например, команда «ifconfig eth0 broadcast 172.16.25.63» устанавливает широковещательный адрес для интерфейса eth0:
+
+1
+[root@sedicomm ~]# ifconfig eth0 broadcast 172.16.25.63
+ 
+
+9. Как назначить IP-адрес, маску подсети и широковещательный адрес для сетевого интерфейса?
+Чтобы назначить IP-адрес, адрес подсети и широковещательный адрес одновременно, используйте команду «ifconfig» со всеми аргументами, как указано ниже:
+
+1
+[root@sedicomm ~]# ifconfig eth0 172.16.25.125 netmask 255.255.255.224 broadcast 172.16.25.63
+ 
+
+10. Как изменить MTU для сетевого интерфейса?
+Аргумент «mtu» устанавливает максимальную единицу передачи для интерфейса. MTU позволяет вам установить предельный размер пакетов, которые передаются по интерфейсу. Например, «ifconfig eth0 mtu 1000» установит максимальный объем пакета для данного интерфейса (то есть 1000). Не все сетевые интерфейсы поддерживают настройки MTU:
+
+1
+[root@sedicomm ~]# ifconfig eth0 mtu 1000
+ 
+
+11. Как включить Promiscuous режим?
+Что происходит в обычном режиме, когда пакет, полученный сетевой картой, при проверке узнаёт, что пакет принадлежит ему самому? Он отбрасывает этот пакет, но Promiscuous режим используется для приема абсолютно всех пакетов, которые проходят через сетевую карту.
+
+Большинство современных сетевых инструментов использует Promiscuous режим для захвата и анализа пакетов, которые проходят через сетевой интерфейс. Чтобы установить Promiscuous режим, используйте следующую команду:
+
+1
+[root@sedicomm ~]# ifconfig eth0 promisc
+ 
+
+12. Как отключить Promiscuous режим?
+Чтобы отключить Promiscuous режим, используйте ключ «-promisc», который возвращает обычную работу сетевого интерфейса:
+
+1
+[root@sedicomm ~]# ifconfig eth0 -promisc
+ 
+
+13. Как добавить новый псевдоним в сетевой интерфейс?
+Утилита ifconfig позволяет вам настраивать дополнительные сетевые интерфейсы, используя функцию псевдонимов “Alias“. Чтобы добавить псевдоним сетевого интерфейса eth0, используйте следующую команду. Обратите внимание, что псевдоним сетевого адреса находится в той же маске подсети. Например, если ваш IP-адрес сети eth0 равен 172.16.25.125, то IP-адрес псевдонима должен быть 172.16.25.127:
+
+1
+[root@sedicomm ~]# ifconfig eth0:0 172.16.25.127
+ 
+
+Проверьте вновь созданный адрес сетевого интерфейса псевдонима, используя команду «ifconfig eth0:0».
+
+1
+[root@sedicomm ~]# ifconfig eth0:0
+2
+​
+3
+eth0:0 Link encap:Ethernet HWaddr 00:01:6C:99:14:68
+4
+inet addr:172.16.25.123 Bcast:172.16.25.63 Mask:255.255.255.240
+5
+UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
+6
+Interrupt:17
+ 
+
+14. Как удалить псевдоним для сетевого интерфейса?
+Если вам больше не нужен псевдоним сетевого интерфейса или вы неправильно настроили его, вы можете удалить его с помощью следующей команды:
+
+1
+[root@sedicomm ~]# ifconfig eth0:0 down
+ 
+
+15. Как изменить MAC-адрес сетевого интерфейса?
+Чтобы изменить MAC-адрес (Media Access Control) сетевого интерфейса eth0, используйте следующую команду с аргументом «hw ether»:
+
+1
+[root@sedicomm ~]# ifconfig eth0 hw ether AA:BB:CC:DD:EE:FF
+ 
+
+Это наиболее полезные команды для настройки сетевых интерфейсов в Linux, для получения дополнительной информации об использования команды ifconfig загляните в man-страницу «man ifconfig» с помощью терминала
